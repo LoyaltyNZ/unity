@@ -1,3 +1,7 @@
+[![Serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
+[![Go Report Card](https://goreportcard.com/badge/github.com/whithajess/unity)](https://goreportcard.com/report/github.com/whithajess/unity)
+[![License](https://img.shields.io/github/license/whithajess/unity.svg)](LICENSE.md)
+
 # Unity
 
 A chatbot with the following goals in mind:
