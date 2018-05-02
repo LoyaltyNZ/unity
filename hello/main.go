@@ -25,16 +25,16 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 	slashCommand, err := slack.SlashCommandParse(r)
 
 	if err != nil {
-		return events.APIGatewayProxyResponse{Body: "No", StatusCode: 500}, nil
+		return events.APIGatewayProxyResponse{Body: "Internal Server Error", StatusCode: 500}, nil
 	}
 
 	// Check the Verification token given from Slack matches our Bot Token
 	if !slashCommand.ValidateToken(os.Getenv("VERIFICATION_TOKEN")) {
-		return events.APIGatewayProxyResponse{Body: "No", StatusCode: 403}, nil
+		return events.APIGatewayProxyResponse{Body: "Unauthorised", StatusCode: 401}, nil
 	}
 
 	// Made it through.
-	return events.APIGatewayProxyResponse{Body: "Hi you passed", StatusCode: 200}, nil
+	return events.APIGatewayProxyResponse{Body: slashCommand.Text, StatusCode: 200}, nil
 }
 
 func main() {
