@@ -48,8 +48,8 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 					// Don't do anything if Unity is the one sending the message
 					// We don't want an infinite recursion situation.
 					if ev.Username != "Unity" {
-				      // TODO: This is where to add the bot logic
-					  api.PostMessage(ev.Channel, "Yes, hello.", postParams)
+						// TODO: This is where to add the bot logic
+						api.PostMessage(ev.Channel, "Yes, hello.", postParams)
 					}
 				}
 			}
