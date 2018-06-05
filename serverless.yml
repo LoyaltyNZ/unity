@@ -6,7 +6,7 @@
 #    docs.serverless.com
 #
 
-service: unity
+service: hello
 
 provider:
   name: aws
@@ -31,8 +31,9 @@ provider:
 #            - "/*"
 
 # you can define service wide environment variables here
-#  environment:
-#    variable1: value1
+  environment:
+    VERIFICATION_TOKEN: ${ssm:unityBotVerificationToken}
+    OAUTH_ACCESS_TOKEN: ${ssm:unityBotOAuthAccessToken}
 
 package:
  exclude:
@@ -41,14 +42,20 @@ package:
    - ./bin/**
 
 functions:
-  hello:
+  unity:
     handler: bin/hello
     events:
       - http:
           path: hello
           method: post
-    environment:
-      VERIFICATION_TOKEN: ${ssm:unityBotVerificationToken}
+#  on-call:
+#    handler: bin/on-call
+#    events:
+#      - http:
+#          path: on-call
+#          method: post
+#    environment:
+#      AUTH_TOKEN: ${ssm:unityPagerDutyAuthToken}
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

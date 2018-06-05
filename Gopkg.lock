@@ -9,14 +9,8 @@
     "lambda/messages",
     "lambdacontext"
   ]
-  revision = "6e2e37798efbb1dfd8e9c6681702e683a6046517"
-  version = "v1.0.1"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/awslabs/aws-lambda-go-api-proxy"
-  packages = ["core"]
-  revision = "5aaec6761420bbbd4b1f4cf9e2d6eff552413986"
+  revision = "4d30d0ff60440c2d0480a15747c96ee71c3c53d4"
+  version = "v1.2.0"
 
 [[projects]]
   name = "github.com/gorilla/websocket"
@@ -25,14 +19,20 @@
   version = "v1.2.0"
 
 [[projects]]
+  branch = "master"
   name = "github.com/nlopes/slack"
   packages = ["."]
-  revision = "8ab4d0b364ef1e9af5d102531da20d5ec902b6c4"
-  version = "v0.2.0"
+  revision = "372b354625964a2a904e54b2889cb01a69f4dfb3"
+
+[[projects]]
+  branch = "feature/message_event_bot_subtype"
+  name = "github.com/whithajess/slack"
+  packages = ["slackevents"]
+  revision = "8ac694b2d41dc2f8cac121f2022ae83befb05f96"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "c02bde8cecece4a4cda91bd364d3eb571c69d618aebce51e4eff45d89d7ff4fc"
+  inputs-digest = "7afac9325abc163ad877ccea1cde19b6ad689be48893ebbc1ccb07ce05b536ea"
   solver-name = "gps-cdcl"
   solver-version = 1
