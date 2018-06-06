@@ -9,7 +9,7 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 
 	"github.com/nlopes/slack"
-	"github.com/whithajess/slack/slackevents"
+	"github.com/whithajess/slack/slackevents" // Need to use my fork until https://github.com/nlopes/slack/pull/326 is merged
 )
 
 // Response - Basic json response
@@ -22,12 +22,11 @@ var api = slack.New(os.Getenv("OAUTH_ACCESS_TOKEN"))
 
 // Handler - Handles Requests (Returns Echoed Message as Response)
 func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	fmt.Println("request:", request)
 	eventsAPIEvent, error := slackevents.ParseEvent(json.RawMessage(request.Body), slackevents.OptionVerifyToken(slackevents.TokenComparator{os.Getenv("VERIFICATION_TOKEN")}))
 
 	if error != nil {
 		// TODO: Proper responses for Unauthorised
-		fmt.Println("Error:", error) // TODO: Worth a PR to nlopes/slack to change the error from "No" I mean come on
+		fmt.Println("Error:", error)
 		return events.APIGatewayProxyResponse{Body: "Internal Server Error", StatusCode: 500}, nil
 	}
 
