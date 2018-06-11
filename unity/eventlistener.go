@@ -20,8 +20,9 @@ type Response struct {
 // Initialise Slack API with the Bot Token
 var api = slack.New(os.Getenv("OAUTH_ACCESS_TOKEN"))
 
-// Handler - Handles Requests (Returns Echoed Message as Response)
-func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+// Listener - Listens for Slack Events and sends legitimate ones to Amazon Lex for natural language parsing
+// based on the results Lex will call another Lambda
+func Listener(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	eventsAPIEvent, error := slackevents.ParseEvent(json.RawMessage(request.Body), slackevents.OptionVerifyToken(slackevents.TokenComparator{os.Getenv("VERIFICATION_TOKEN")}))
 
 	if error != nil {
@@ -47,8 +48,8 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 					// Don't do anything if Unity is the one sending the message
 					// We don't want an infinite recursion situation.
 					if ev.Username != "Unity" {
-						// TODO: This is where to add the bot logic
-						api.PostMessage(ev.Channel, "Yes, hello.", postParams)
+						// TODO: This is where I am going to integrate with Amazon Lex
+						api.PostMessage(ev.Channel, "Yes, slackbot.", postParams)
 					}
 				}
 			}
@@ -63,5 +64,5 @@ func Handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 }
 
 func main() {
-	lambda.Start(Handler)
+	lambda.Start(Listener)
 }

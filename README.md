@@ -17,3 +17,7 @@ A chatbot with the following goals in mind:
 * Format for humans not robots (prefer formatted tables, over raw JSON dumps for example)
 * Help text should be included where possible to allow discovery of features
 * Avoid over technical jargon. Clear and accurate is desirable, but a technically correct but not understandable message has missed the mark.
+
+<!-- TODO: Write About what technologies/usage is happening -->
+<!-- TODO: Write Instructions for Usage -->
+<!-- TODO: Write Instructions for Collaboration -->
