@@ -6,7 +6,7 @@
 #    docs.serverless.com
 #
 
-service: hello
+service: unity
 
 provider:
   name: aws
@@ -43,10 +43,10 @@ package:
 
 functions:
   unity:
-    handler: bin/hello
+    handler: bin/unity
     events:
       - http:
-          path: hello
+          path: unity
           method: post
 #  on-call:
 #    handler: bin/on-call
@@ -82,7 +82,7 @@ functions:
 #            detail:
 #              state:
 #                - pending
-#      - cloudwatchLog: '/aws/lambda/hello'
+#      - cloudwatchLog: '/aws/lambda/unity'
 #      - cognitoUserPool:
 #          pool: MyUserPool
 #          trigger: PreSignUp
