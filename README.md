@@ -32,12 +32,12 @@ An AWS SlackBot with the following goals in mind:
 #### Setup
 
 ***1.*** Login to https://api.slack.com/apps and Create New App
-    * The App name you use will be what users need to mention to communicate with Unity bot i.e @unity
-    * We are using the Events api so you will need to enable events
-    * The App will need to be installed for you to get an OAuth token.
+   * The App name you use will be what users need to mention to communicate with Unity bot i.e @unity
+   * We are using the Events api so you will need to enable events
+   * The App will need to be installed for you to get an OAuth token.
 
 ***2.*** After creating the application in Slack we need to set tokens for the App to use:
-    * These are region specific if you haven't set `AWS_PROFILE` you may want to use the flag for setting the region `--region ap-southeast-2`
+   * These are region specific if you haven't set `AWS_PROFILE` you may want to use the flag for setting the region `--region ap-southeast-2`
 ```bash
   # The verification token
   # can be found under Basic Information in the App on https://api.slack.com/apps
@@ -59,10 +59,10 @@ An AWS SlackBot with the following goals in mind:
 ***4.*** The output of deployment will have an `endpoint`, you need to set this on the App on https://api.slack.com/apps under Event Subscriptions Request URL.
 
 ***5.*** After this you should subscribe the App to Bot Events (Still under Event Subscriptions)
-    * I suggest for this you use:
-        * `app_mention` - Subscribe to only the message events that mention your app or bot
-        * `message.app_home` - A user sent a message to your Slack app
-        * `message.im` - A message was posted in a direct message channel
+   * I suggest for this you use:
+       * `app_mention` - Subscribe to only the message events that mention your app or bot
+       * `message.app_home` - A user sent a message to your Slack app
+       * `message.im` - A message was posted in a direct message channel
 
 
 <!-- TODO: Write Instructions for Collaboration -->
