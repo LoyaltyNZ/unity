@@ -49,15 +49,27 @@ func Listener(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResp
 					// We don't want an infinite recursion situation.
 					if ev.Username != "Unity" {
 						// TODO: This is where I am going to integrate with Amazon Lex
+						// Need to move this into a shared method
 						api.PostMessage(ev.Channel, "Yes, slackbot.", postParams)
 					}
+				}
+			case *slackevents.AppMentionEvent:
+				{
+					// TODO: This is where I am going to integrate with Amazon Lex
+					// Need to move this into a shared method
+					api.PostMessage(ev.Channel, "Yes, slackbot.", postParams)
+				}
+			default:
+				{
+					fmt.Println("Bad Inner Event Type:", event)
+					return events.APIGatewayProxyResponse{Body: "Bad Request", StatusCode: 400}, nil
 				}
 			}
 			return events.APIGatewayProxyResponse{Body: request.Body, StatusCode: 200}, nil
 		}
 	default:
 		{
-			fmt.Println("Bad Request Event:", event)
+			fmt.Println("Bad Outer Event Type:", event)
 			return events.APIGatewayProxyResponse{Body: "Bad Request", StatusCode: 400}, nil
 		}
 	}
